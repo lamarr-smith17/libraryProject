@@ -1,8 +1,8 @@
-const pTest = document.querySelector('p');
+const pTest = document.getElementById('test');
+const mainContainer = document.getElementById('main-container');
 
 
 
-let myLibrary = [];
 
 class Book{
     constructor(title, author, numOfPages, bookStatus){
@@ -17,4 +17,16 @@ class Book{
 }
 
 let eightySix = new Book('86: Eighty-Six', 'Asato Asato', '326', 'Read');
-console.log(eightySix.addBook())
+let grimgar = new Book('Grimgar', 'Ao', '326', 'Read');
+let tensei = new Book('Mushoku Tensei', 'Rudeus', '326', 'Unread');
+let myLibrary = [eightySix.addBook(), grimgar.addBook(), tensei.addBook()];
+for (let i = 0; i < myLibrary.length; i++){
+    let newDiv = document.createElement('div');
+    let newP = document.createElement('p');
+    mainContainer.appendChild(newDiv);
+    newDiv.appendChild(newP);
+    newDiv.classList.add('class' + i)
+    newP.innerHTML = myLibrary[i]
+}
+
+
