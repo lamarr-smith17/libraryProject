@@ -1,34 +1,43 @@
 const pTest = document.getElementById('test');
 const mainContainer = document.getElementById('main-container');
 
+const b = document.getElementById('button');
+let myLibrary = [];
 
-
-
-class Book{
-    constructor(title, author, numOfPages, bookStatus){
-        this.title = title,
-        this.author = author,
-        this.numOfPages = numOfPages,
-        this.bookStatus = bookStatus;
+let addBook = function (ev){
+    ev.preventDefault();
+    let newBook = {
+         bookTitle: document.getElementById('bookTitle').value,
+         bookAuthor: document.getElementById('bookAuthor').value,
+         pageNum: document.getElementById('bookPages').value,
+         bookStatus: document.getElementById('bookRead').value
+         
     }
-    addBook(){
-        return `Title: ${this.title} \n Author: ${this.author} \n Pages: ${this.numOfPages} \n Read Status: ${this.bookStatus}`;
-    }
-
+    myLibrary.push(newBook);
+    console.log(myLibrary)
+   
 }
 
-let eightySix = new Book('86: Eighty-Six', 'Asato Asato', '326', 'Read');
-let grimgar = new Book('Grimgar', 'Ao', '326', 'Read');
-let tensei = new Book('Mushoku Tensei', 'Rudeus', '326', 'Unread');
-let myLibrary = [eightySix.addBook(), grimgar.addBook(), tensei.addBook()];
+b.addEventListener('click', addBook);
+
+
+
+
+
+
 for (let i = 0; i < myLibrary.length; i++){
     let bookEntry = document.createElement('div');
     let titleText = document.createElement('p');
+    let authorText = document.createElement('p');
+    let pageText = document.createElement('p');
+    let readText = document.createElement('p');
     mainContainer.appendChild(bookEntry);
-    bookEntry.appendChild(titleText);
+    bookEntry.append(titleText, authorText, pageText, readText);
     bookEntry.setAttribute("id", "div" + i);
     bookEntry.setAttribute("class", "bookHolder");
     titleText.innerText = myLibrary[i]
-    
-    console.log(myLibrary[i])
+    // authorText.innerText = myLibrary[i].getAuthor();
+    // pageText.innerText = myLibrary[i].getNumOfPages();
+    // readText.innerText = myLibrary[i].getBookStatus();
+
 }
