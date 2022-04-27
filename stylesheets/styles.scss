@@ -5,3 +5,16 @@
     font-family: 'Raleway', sans-serif; // Weights: Light = 300, Medium = 400, SemiBold = 600. Use Light for book info, Medium for labels, SemiBold for headers
 
 }
+div {
+    &#main-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    &.bookHolder{
+        display: flex;
+        flex-direction: column;
+        border: 1px solid red;
+        
+    }
+}
