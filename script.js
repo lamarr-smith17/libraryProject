@@ -29,7 +29,6 @@ for (let i = 0; i < myLibrary.length; i++){
     bookEntry.setAttribute("id", "div" + i);
     bookEntry.setAttribute("class", "bookHolder");
     titleText.innerText = myLibrary[i]
-    console.log(myLibrary[i].title)
+    
+    console.log(myLibrary[i])
 }
-
-console.log(eightySix.title)
