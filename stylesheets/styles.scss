@@ -5,6 +5,9 @@
     font-family: 'Raleway', sans-serif; // Weights: Light = 300, Medium = 400, SemiBold = 600. Use Light for book info, Medium for labels, SemiBold for headers
 
 }
+h1 {
+    text-align: center;
+}
 div {
     &#main-container {
         display: flex;
@@ -17,4 +20,12 @@ div {
         border: 1px solid red;
         
     }
+}
+
+.bookLabel {
+    font-weight: 400;
+    font-size: 1.3125rem;
+}
+.bookInfo {
+    font-weight: 300;
 }

@@ -5,6 +5,10 @@
   font-family: "Raleway", sans-serif;
 }
 
+h1 {
+  text-align: center;
+}
+
 div#main-container {
   display: flex;
   flex-direction: column;
@@ -14,6 +18,15 @@ div.bookHolder {
   display: flex;
   flex-direction: column;
   border: 1px solid red;
+}
+
+.bookLabel {
+  font-weight: 400;
+  font-size: 1.3125rem;
+}
+
+.bookInfo {
+  font-weight: 300;
 }
 
 /*# sourceMappingURL=styles.css.map */

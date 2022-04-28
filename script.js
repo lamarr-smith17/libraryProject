@@ -1,9 +1,15 @@
 const pTest = document.getElementById('test');
 const mainContainer = document.getElementById('main-container');
-
 const b = document.getElementById('button');
-let myLibrary = [];
+const bookEntry = document.createElement('div');
+const titleText = document.createElement('p');
+const authorText = document.createElement('p');
+const pageText = document.createElement('p');
+const readText = document.createElement('p');
+mainContainer.appendChild(bookEntry);
+bookEntry.append(titleText, authorText, pageText, readText);
 
+// Book array and book class
 class Book{
     constructor(title, author, numOfPages, bookStatus){
         this.title = title,
@@ -12,37 +18,40 @@ class Book{
         this.bookStatus = bookStatus;
     }
 }
-let addBook = function (ev){
+let eight = new Book('86: Eighty-Six', 'Asato Asato', '326', 'Read');
+
+let myLibrary = [eight];
+
+
+// Add book function that pushes the book to the array and creates the new book object
+function addBook (ev){
     ev.preventDefault();
-    // let newBook = {
-    //      bookTitle: document.getElementById('bookTitle').value,
-    //      bookAuthor: document.getElementById('bookAuthor').value,
-    //      pageNum: document.getElementById('bookPages').value,
-    //      bookStatus: document.getElementById('bookRead').value
-         
-    // }
+    
     let newBook = new Book(document.getElementById('bookTitle').value, document.getElementById('bookAuthor').value, document.getElementById('bookPages').value, document.getElementById('bookRead').value);
     myLibrary.push(newBook);
-    mainContainer.innerHTML = "";
+
+    // Each time a new book is added, this clears the HTML so a book does not repeat it's entry
+    mainContainer.innerHTML = ""; 
+
+    bookCardCreater();
+    
+    
+}
+// Creates the new book card which displays the title, author, page count, and read status
+function bookCardCreater(){
     for (let i = 0; i < myLibrary.length; i++){
-        let bookEntry = document.createElement('div');
-        let titleText = document.createElement('p');
-        let authorText = document.createElement('p');
-        let pageText = document.createElement('p');
-        let readText = document.createElement('p');
-        mainContainer.appendChild(bookEntry);
-        bookEntry.append(titleText, authorText, pageText, readText);
+        
         bookEntry.setAttribute("id", "div" + i);
         bookEntry.setAttribute("class", "bookHolder");
         titleText.innerText = myLibrary[i].title;
-        // authorText.innerText = myLibrary[i].getAuthor();
-        // pageText.innerText = myLibrary[i].getNumOfPages();
-        // readText.innerText = myLibrary[i].getBookStatus();
+        authorText.innerText = myLibrary[i].author;
+        pageText.innerText = myLibrary[i].numOfPages;
+        readText.innerText = myLibrary[i].bookStatus;
     
     }
-    
 }
 
+bookCardCreater()
 b.addEventListener('click', addBook);
 
 
