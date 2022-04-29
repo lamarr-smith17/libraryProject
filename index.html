@@ -16,35 +16,39 @@
     <header>
         <h1>Library Project</h1>
         <button id="addBtn">Add a book!</button>
-        <form action="./script.js" id="testForm" name="testForm">
-            <ul>
-                <li>
-                    <label for="bookTitle">
-                        Title: <input type="text" id="bookTitle" name="title" maxlength="126">
-                    </label>
-                </li>
-                <li>
-                    <label for="bookAuthor">
-                        Author: <input type="text" id="bookAuthor" name="author">
-                    </label>
-                </li>
-                <li>
-                    <label for="bookPages">
-                        Pages: <input type="number" id="bookPages" name="pages">
-                    </label>
-                </li>
-                <li>
-                    <label for="bookRead">
-                        Read: <input type="text" id="bookRead" name="read">
-                    </label>
-                </li>
-            </ul>
-            <button id="button">test</button>
-        </form>
+        <div id="formHolder">
+            <form action="./script.js" id="testForm" name="testForm">
+                <ul id="formPopup">
+                    <li>
+                        <label for="bookTitle">
+                            Title: <input type="text" id="bookTitle" name="title" maxlength="126">
+                        </label>
+                    </li>
+                    <li>
+                        <label for="bookAuthor">
+                            Author: <input type="text" id="bookAuthor" name="author">
+                        </label>
+                    </li>
+                    <li>
+                        <label for="bookPages">
+                            Pages: <input type="number" id="bookPages" name="pages">
+                        </label>
+                    </li>
+                    <li>
+                        <label for="bookRead">
+                            Read: <input type="text" id="bookRead" name="read">
+                        </label>
+                    </li>
+                </ul>
+                <button id="button" type="submit">Add Me!</button>
+                <button id="closeBtn" type="button">Close Me!</button>
+            </form>
+        </div>
     </header>
+
     <main>
         <div id="main-container">
-           <div class="bookHolder">
+           <div class="bookHolder" id="bookHolder">
                <div class="titleDiv">
                    <p class="bookLabel">Title: <span class="bookInfo">86: Eighty-Six</span></p>
                </div>
@@ -60,5 +64,6 @@
            </div>
         </div>
     </main>
+
 </body>
 </html>

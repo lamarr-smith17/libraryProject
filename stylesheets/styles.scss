@@ -1,14 +1,28 @@
+// Global Styles
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif; // Weights: Light = 300, Medium = 400, SemiBold = 600. Use Light for book info, Medium for labels, SemiBold for headers
-
 }
+li {
+    list-style-type: none;
+    border: none;
+    
+}
+
+// Header Styles
 h1 {
     text-align: center;
 }
+#formPopup {
+    display: flex;
+}
+// Main Styles
 div {
+    &#formHolder {
+        display: none;
+    }
     &#main-container {
         display: flex;
         flex-direction: column;

@@ -5,10 +5,22 @@
   font-family: "Raleway", sans-serif;
 }
 
+li {
+  list-style-type: none;
+  border: none;
+}
+
 h1 {
   text-align: center;
 }
 
+#formPopup {
+  display: flex;
+}
+
+div#formHolder {
+  display: none;
+}
 div#main-container {
   display: flex;
   flex-direction: column;
