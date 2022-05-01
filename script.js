@@ -1,9 +1,10 @@
 const mainContainer = document.getElementById('main-container');
-const addBtn = document.getElementById('addBtn');
-const closeBtn = document.getElementById('closeBtn');
+const formOpenBtn = document.getElementById('formOpenBtn');
+const formCloseBtn = document.getElementById('formCloseBtn');
 const formHolder = document.getElementById('formHolder')
-const b = document.getElementById('button');
-
+const addBookButton = document.getElementById('button');
+let htmlBook = '';
+let myLibrary = [];
 
 
 // Book array and book class
@@ -15,46 +16,56 @@ class Book{
         this.bookStatus = bookStatus;
     }
 }
-let eight = new Book('86: Eighty-Six', 'Asato Asato', '326', 'Read');
+// let eight = new Book('86: Eighty-Six', 'Asato Asato', '326', 'Read');
 
-let myLibrary = [];
 
 
 // Add book function that pushes the book to the array and creates the new book object
 function addBook (ev){
     ev.preventDefault();
-    
-    let newBook = new Book(document.getElementById('bookTitle').value, document.getElementById('bookAuthor').value, document.getElementById('bookPages').value, document.getElementById('bookRead').value);
+    let bookTitle = document.getElementById('bookTitle').value;
+    let bookAuthor = document.getElementById('bookAuthor').value;
+    let bookPages = document.getElementById('bookPages').value;
+    let bookRead = document.getElementById('bookRead').value;
+    let newBook = new Book(bookTitle, bookAuthor, bookPages, bookRead);
     myLibrary.push(newBook);
-
-    // Each time a new book is added, this clears the HTML so a book does not repeat it's entry
-    mainContainer.innerHTML = ""; 
-    
-    bookCardCreater();
+    myLibrary.forEach(bookCardCreater(newBook));
     formClose();
     
 }
 // Creates the new book card which displays the title, author, page count, and read status
-function bookCardCreater(){
-    for (let i = 0; i < myLibrary.length; i++){
-        const bookEntry = document.createElement('div');
-        const titleText = document.createElement('p');
-        const authorText = document.createElement('p');
-        const pageText = document.createElement('p');
-        const readText = document.createElement('p');
-        mainContainer.appendChild(bookEntry);
-        bookEntry.append(titleText, authorText, pageText, readText);
-        bookEntry.setAttribute("id", "div" + i);
-        bookEntry.setAttribute("class", "bookHolder");
-        titleText.innerText = myLibrary[i].title;
-        authorText.innerText = myLibrary[i].author;
-        pageText.innerText = myLibrary[i].numOfPages;
-        readText.innerText = myLibrary[i].bookStatus;
-    }
+function bookCardCreater(newBook){
+        htmlBook += `
+        <div class="bookHolder" id="bookHolder">
+            <div class="titleDiv">
+                <p class="bookLabel">Title: <span class="bookInfo">${newBook.title}</span></p>
+            </div>
+            <div class="authorDiv">
+            <p class="bookLabel">Author: <span class="bookInfo">${newBook.author}</span></p>
+            </div>
+            <div class="pageDiv">
+                <p class="bookLabel">Pages: <span class="bookInfo">${newBook.numOfPages}</span></p>
+            </div>
+            <div class="readDiv">
+                <p class="bookLabel">Read: <span class="bookInfo">${newBook.bookStatus}</span></p>
+            </div>
+            <div class="deleteDiv">
+                <button type="button" onclick="deleteBook()"> Delete Book </button>
+            </div>
+        </div>       
+        `
+        // Each time a new book is added, this clears the HTML so a book does not repeat it's entry
+        mainContainer.innerHTML = ""; 
+        mainContainer.innerHTML = htmlBook;  
 }
 
 function deleteBook(){
-    
+    let confirmationBox = confirm('Are you sure you want to delete this book?');
+    if (confirmationBox === true){
+        // Stuck
+    } else {
+        return ;
+    }
 }
 
 function formPopup (){
@@ -63,10 +74,9 @@ function formPopup (){
 function formClose (){
     formHolder.style.display = "none";
 }
-
-b.addEventListener('click', addBook);
-addBtn.addEventListener('click', formPopup);
-closeBtn.addEventListener('click', formClose);
+addBookButton.addEventListener('click', addBook);
+formOpenBtn.addEventListener('click', formPopup);
+formCloseBtn.addEventListener('click', formClose);
 
 
 

@@ -30,6 +30,7 @@ div.bookHolder {
   display: flex;
   flex-direction: column;
   border: 1px solid red;
+  height: 500px;
 }
 
 .bookLabel {
@@ -39,6 +40,12 @@ div.bookHolder {
 
 .bookInfo {
   font-weight: 300;
+}
+
+button#deleteButton {
+  height: 100px;
+  width: 100px;
+  color: red;
 }
 
 /*# sourceMappingURL=styles.css.map */

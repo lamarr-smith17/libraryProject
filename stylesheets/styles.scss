@@ -32,7 +32,7 @@ div {
         display: flex;
         flex-direction: column;
         border: 1px solid red;
-        
+        height: 500px;
     }
 }
 
@@ -42,4 +42,12 @@ div {
 }
 .bookInfo {
     font-weight: 300;
+}
+button {
+    &#deleteButton {
+        height: 100px;
+        width: 100px;
+        color: red;
+        
+    }
 }
