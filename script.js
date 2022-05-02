@@ -4,39 +4,40 @@ const formCloseBtn = document.getElementById('formCloseBtn');
 const formHolder = document.getElementById('formHolder')
 const addBookButton = document.getElementById('button');
 let htmlBook = '';
+
+// Book Array
 let myLibrary = [];
 
-
-// Book array and book class
+// Book Class
 class Book{
-    constructor(title, author, numOfPages, bookStatus){
+    constructor(title, author, numOfPages, bookStatus, bookID){
         this.title = title,
         this.author = author,
         this.numOfPages = numOfPages,
-        this.bookStatus = bookStatus;
+        this.bookStatus = bookStatus,
+        this.bookID = bookID; 
     }
 }
-// let eight = new Book('86: Eighty-Six', 'Asato Asato', '326', 'Read');
 
-
-
-// Add book function that pushes the book to the array and creates the new book object
+// Adds the new book to the array and generates a unique number ID for each book
 function addBook (ev){
     ev.preventDefault();
     let bookTitle = document.getElementById('bookTitle').value;
     let bookAuthor = document.getElementById('bookAuthor').value;
     let bookPages = document.getElementById('bookPages').value;
     let bookRead = document.getElementById('bookRead').value;
-    let newBook = new Book(bookTitle, bookAuthor, bookPages, bookRead);
+    let bookID = Math.floor(Math.random() * 10000);
+    let newBook = new Book(bookTitle, bookAuthor, bookPages, bookRead, bookID);
     myLibrary.push(newBook);
     myLibrary.forEach(bookCardCreater(newBook));
-    formClose();
-    
+    formClose();   
 }
-// Creates the new book card which displays the title, author, page count, and read status
+
+// Creates the new book card which displays the user input
 function bookCardCreater(newBook){
-        htmlBook += `
-        <div class="bookHolder" id="bookHolder">
+        htmlBook += 
+        /* START */`
+        <div class="bookHolder" id="${newBook.bookID}">
             <div class="titleDiv">
                 <p class="bookLabel">Title: <span class="bookInfo">${newBook.title}</span></p>
             </div>
@@ -50,27 +51,40 @@ function bookCardCreater(newBook){
                 <p class="bookLabel">Read: <span class="bookInfo">${newBook.bookStatus}</span></p>
             </div>
             <div class="deleteDiv">
-                <button type="button" onclick="deleteBook()"> Delete Book </button>
+                <button type="button" onclick="deleteBook(${newBook.bookID})"> Delete Book </button>
             </div>
         </div>       
-        `
-        // Each time a new book is added, this clears the HTML so a book does not repeat it's entry
-        mainContainer.innerHTML = ""; 
+        ` /* END */
         mainContainer.innerHTML = htmlBook;  
 }
 
-function deleteBook(){
+// Grabs the book's unique ID number and deletes the book from the display and myLibrary array
+function deleteBook(bookID){
     let confirmationBox = confirm('Are you sure you want to delete this book?');
+    let bookDelete = document.getElementById(bookID);
     if (confirmationBox === true){
-        // Stuck
+        /* Goes through the array, finds the newBook.bookID that matches the bookID,
+        and gets the index of the object, and removes it from the array, then returns the updated array*/
+        myLibrary.forEach((x)=>{
+            if (x.bookID === bookID){
+                let indexOfBook = myLibrary.indexOf(x);
+                myLibrary.splice(indexOfBook, 1)
+                return myLibrary;
+            }
+        })
+       mainContainer.removeChild(bookDelete);
+       return myLibrary;
     } else {
         return ;
     }
 }
 
+// Makes the form appear
 function formPopup (){
     formHolder.style.display = "block";
 }
+
+// Closes the form
 function formClose (){
     formHolder.style.display = "none";
 }
