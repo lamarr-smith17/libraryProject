@@ -3,7 +3,6 @@ const formOpenBtn = document.getElementById('formOpenBtn');
 const formCloseBtn = document.getElementById('formCloseBtn');
 const formHolder = document.getElementById('formHolder')
 const addBookButton = document.getElementById('button');
-let htmlBook = '';
 
 // Book Array
 let myLibrary = [];
@@ -29,33 +28,38 @@ function addBook (ev){
     let bookID = Math.floor(Math.random() * 10000);
     let newBook = new Book(bookTitle, bookAuthor, bookPages, bookRead, bookID);
     myLibrary.push(newBook);
-    myLibrary.forEach(bookCardCreater(newBook));
-    formClose();   
+    // myLibrary.forEach(bookCardCreater(newBook)) // This works but causes an error in console.log
+    for (let x of myLibrary){ // This also works and causes no error, but duplicates values??
+        bookCardCreater(x);
+    }
 }
 
 // Creates the new book card which displays the user input
 function bookCardCreater(newBook){
-        htmlBook += 
-        /* START */`
-        <div class="bookHolder" id="${newBook.bookID}">
-            <div class="titleDiv">
-                <p class="bookLabel">Title: <span class="bookInfo">${newBook.title}</span></p>
-            </div>
-            <div class="authorDiv">
-            <p class="bookLabel">Author: <span class="bookInfo">${newBook.author}</span></p>
-            </div>
-            <div class="pageDiv">
-                <p class="bookLabel">Pages: <span class="bookInfo">${newBook.numOfPages}</span></p>
-            </div>
-            <div class="readDiv">
-                <p class="bookLabel">Read: <span class="bookInfo">${newBook.bookStatus}</span></p>
-            </div>
-            <div class="deleteDiv">
-                <button type="button" onclick="deleteBook(${newBook.bookID})"> Delete Book </button>
-            </div>
-        </div>       
-        ` /* END */
-        mainContainer.innerHTML = htmlBook;  
+    let htmlBook =  
+    /* START */`
+    <div class="bookHolder" id="${newBook.bookID}">
+        <div class="titleDiv">
+            <p class="bookLabel">Title: <span class="bookInfo">${newBook.title}</span></p>
+        </div>
+        <div class="authorDiv">
+         <p class="bookLabel">Author: <span class="bookInfo">${newBook.author}</span></p>
+        </div>
+        <div class="pageDiv">
+            <p class="bookLabel">Pages: <span class="bookInfo">${newBook.numOfPages}</span></p>
+        </div>
+        <div class="readDiv">
+            <p class="bookLabel">Read: <span class="bookInfo">${newBook.bookStatus}</span></p>
+        </div>
+        <div class="deleteDiv">
+            <button type="button" onclick="deleteBook(${newBook.bookID})"> Delete Book </button>
+        </div>
+    </div>       
+    ` /* END */
+    mainContainer.innerHTML += " ";
+    mainContainer.innerHTML += htmlBook;   
+
+    formClose();   
 }
 
 // Grabs the book's unique ID number and deletes the book from the display and myLibrary array
