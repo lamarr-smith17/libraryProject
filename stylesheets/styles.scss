@@ -5,6 +5,10 @@
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif; // Weights: Light = 300, Medium = 400, SemiBold = 600. Use Light for book info, Medium for labels, SemiBold for headers
 }
+body {
+    background-color: bisque;
+    min-height: 100vh;
+}
 li {
     list-style-type: none;
     border: none;
@@ -12,33 +16,89 @@ li {
 }
 
 // Header Styles
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    gap: 10px;
+}
 h1 {
     text-align: center;
 }
-#formPopup {
-    display: flex;
+
+// Form Styles
+#formHolder {
+    display: none;
+    border: 3px solid red;
+    background-color: aliceblue;
+    position: fixed;
+    top: 150px; 
+    width: 300px;
+    max-width: 500px;
 }
+#bookForm {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+input[type=text] {
+    width: 150px;
+}
+input[type=number]{
+    width: 100px;
+}
+input[type=text]:focus,
+input[type=number]:focus {
+    outline: none;
+} 
+.btnStyles {
+    width: 150px;
+    height: 25px;
+    border-radius: 20px;
+}
+#addBookBtn {
+    background-color: red;
+    border: red;
+    color: black;
+}
+
+#formCloseBtn {
+    background-color: green;
+    border:green;
+}
+
 // Main Styles
+main {
+    margin-top: 50px;
+}
 div {
-    &#formHolder {
-        display: none;
-    }
     &#main-container {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+        gap: 2rem 1rem;
+        
     }
     &.bookHolder{
         display: flex;
+        background-color: white;
+        font-size: 1.5rem;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         border: 1px solid red;
-        height: 500px;
+        width: 400px;
+        padding: 20px;
     }
 }
+.titleDiv {
+    text-align: center;
+    font-weight: 600;
 
-.bookLabel {
-    font-weight: 400;
-    font-size: 1.3125rem;
 }
 .bookInfo {
     font-weight: 300;

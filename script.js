@@ -2,7 +2,7 @@ const mainContainer = document.getElementById('main-container');
 const formOpenBtn = document.getElementById('formOpenBtn');
 const formCloseBtn = document.getElementById('formCloseBtn');
 const formHolder = document.getElementById('formHolder')
-const addBookButton = document.getElementById('button');
+const addBookBtn = document.getElementById('addBookBtn');
 
 // Book Array
 let myLibrary = [];
@@ -28,10 +28,12 @@ function addBook (ev){
     let bookID = Math.floor(Math.random() * 10000);
     let newBook = new Book(bookTitle, bookAuthor, bookPages, bookRead, bookID);
     myLibrary.push(newBook);
-    // myLibrary.forEach(bookCardCreater(newBook)) // This works but causes an error in console.log
-    for (let x of myLibrary){ // This also works and causes no error, but duplicates values??
-        bookCardCreater(x);
-    }
+    myLibrary.forEach(bookCardCreater(newBook)) // This works but causes an error in console.log
+
+    // for (let x of myLibrary){ // This also works and causes no error, however, it causes duplicate values 
+    //     bookCardCreater(x);
+    //     console.log(x)
+    // }
 }
 
 // Creates the new book card which displays the user input
@@ -40,16 +42,16 @@ function bookCardCreater(newBook){
     /* START */`
     <div class="bookHolder" id="${newBook.bookID}">
         <div class="titleDiv">
-            <p class="bookLabel">Title: <span class="bookInfo">${newBook.title}</span></p>
+            <p class="bookTitle"><span>${newBook.title}</span></p>
         </div>
         <div class="authorDiv">
-         <p class="bookLabel">Author: <span class="bookInfo">${newBook.author}</span></p>
+         <p class="bookAuthor">Author: <span class="bookInfo">${newBook.author}</span></p>
         </div>
         <div class="pageDiv">
-            <p class="bookLabel">Pages: <span class="bookInfo">${newBook.numOfPages}</span></p>
+            <p class="bookPages">Pages: <span class="bookInfo">${newBook.numOfPages}</span></p>
         </div>
         <div class="readDiv">
-            <p class="bookLabel">Read: <span class="bookInfo">${newBook.bookStatus}</span></p>
+            <p class="bookRead">Read: <span class="bookInfo">${newBook.bookStatus}</span></p>
         </div>
         <div class="deleteDiv">
             <button type="button" onclick="deleteBook(${newBook.bookID})"> Delete Book </button>
@@ -77,7 +79,6 @@ function deleteBook(bookID){
             }
         })
        mainContainer.removeChild(bookDelete);
-       return myLibrary;
     } else {
         return ;
     }
@@ -92,7 +93,7 @@ function formPopup (){
 function formClose (){
     formHolder.style.display = "none";
 }
-addBookButton.addEventListener('click', addBook);
+addBookBtn.addEventListener('click', addBook);
 formOpenBtn.addEventListener('click', formPopup);
 formCloseBtn.addEventListener('click', formClose);
 

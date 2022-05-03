@@ -5,37 +5,102 @@
   font-family: "Raleway", sans-serif;
 }
 
+body {
+  background-color: bisque;
+  min-height: 100vh;
+}
+
 li {
   list-style-type: none;
   border: none;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  gap: 10px;
 }
 
 h1 {
   text-align: center;
 }
 
-#formPopup {
-  display: flex;
+#formHolder {
+  display: none;
+  border: 3px solid red;
+  background-color: aliceblue;
+  position: fixed;
+  top: 150px;
+  width: 300px;
+  max-width: 500px;
 }
 
-div#formHolder {
-  display: none;
-}
-div#main-container {
+#bookForm {
+  padding: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
+}
+
+input[type=text] {
+  width: 150px;
+}
+
+input[type=number] {
+  width: 100px;
+}
+
+input[type=text]:focus,
+input[type=number]:focus {
+  outline: none;
+}
+
+.btnStyles {
+  width: 150px;
+  height: 25px;
+  border-radius: 20px;
+}
+
+#addBookBtn {
+  background-color: red;
+  border: red;
+  color: black;
+}
+
+#formCloseBtn {
+  background-color: green;
+  border: green;
+}
+
+main {
+  margin-top: 50px;
+}
+
+div#main-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  gap: 2rem 1rem;
 }
 div.bookHolder {
   display: flex;
+  background-color: white;
+  font-size: 1.5rem;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 1px solid red;
-  height: 500px;
+  width: 400px;
+  padding: 20px;
 }
 
-.bookLabel {
-  font-weight: 400;
-  font-size: 1.3125rem;
+.titleDiv {
+  text-align: center;
+  font-weight: 600;
 }
 
 .bookInfo {

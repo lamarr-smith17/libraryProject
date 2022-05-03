@@ -15,39 +15,84 @@
 <body>
     <header>
         <h1>Library Project</h1>
-        <button id="formOpenBtn">Add a book!</button>
+        <button id="formOpenBtn" class="btnStyles">Add a book!</button>
         <div id="formHolder">
-            <form action="./script.js" id="testForm" name="testForm">
-                <ul id="formPopup">
-                    <li>
-                        <label for="bookTitle">
-                            Title: <input type="text" id="bookTitle" name="title" maxlength="126">
-                        </label>
-                    </li>
-                    <li>
-                        <label for="bookAuthor">
-                            Author: <input type="text" id="bookAuthor" name="author">
-                        </label>
-                    </li>
-                    <li>
-                        <label for="bookPages">
-                            Pages: <input type="number" id="bookPages" name="pages">
-                        </label>
-                    </li>
-                    <li>
-                        <label for="bookRead">
-                            Read: <input type="text" id="bookRead" name="read">
-                        </label>
-                    </li>
-                </ul>
-                <button id="button" type="submit">Add Me!</button>
-                <button id="formCloseBtn" type="button">Close Me!</button>
+            <form action="./script.js" id="bookForm" name="bookForm">                 
+                <label for="bookTitle">
+                Title
+                </label>
+                <input type="text" id="bookTitle" name="title" maxlength="126">
+                <label for="bookAuthor">
+                    Author
+                </label>    
+                <input type="text" id="bookAuthor" name="author">
+                <label for="bookPages">
+                    Pages
+                </label>
+                <input type="number" id="bookPages" name="pages">
+                <label for="bookRead">
+                    Read
+                </label>
+                <input type="text" id="bookRead" name="read">
+                <button id="addBookBtn" class="btnStyles" type="submit">Add Book</button>
+                <button id="formCloseBtn" class="btnStyles" type="button">Close Form</button>
             </form>
         </div>
     </header>
 
     <main>
         <div id="main-container">
+            <!-- <div class="bookHolder" id="${newBook.bookID}">
+                <div class="titleDiv">
+                    <p class="bookTitle"> <span>86: Eighty-Six</span></p>
+                </div>
+                <div class="authorDiv">
+                 <p class="bookAuthor">Author: <span class="bookInfo">Asato Asato</span></p>
+                </div>
+                <div class="pageDiv">
+                    <p class="bookPages">Pages: <span class="bookInfo">326</span></p>
+                </div>
+                <div class="readDiv">
+                    <p class="bookRead">Read: <span class="bookInfo">Read</span></p>
+                </div>
+                <div class="deleteDiv">
+                    <button type="button"> Delete Book </button>
+                </div>
+            </div> 
+            <div class="bookHolder" id="${newBook.bookID}">
+                <div class="titleDiv">
+                    <p class="bookTitle"> <span>Grimgar of Fantasy and Ash</span></p>
+                </div>
+                <div class="authorDiv">
+                 <p class="bookAuthor">Author: <span class="bookInfo">Asato Asato</span></p>
+                </div>
+                <div class="pageDiv">
+                    <p class="bookPages">Pages: <span class="bookInfo">326</span></p>
+                </div>
+                <div class="readDiv">
+                    <p class="bookRead">Read: <span class="bookInfo">Read</span></p>
+                </div>
+                <div class="deleteDiv">
+                    <button type="button"> Delete Book </button>
+                </div>
+            </div> 
+            <div class="bookHolder" id="${newBook.bookID}">
+                <div class="titleDiv">
+                    <p class="bookTitle"> <span>Harry Potter and The Sorcerer's Stone</span></p>
+                </div>
+                <div class="authorDiv">
+                 <p class="bookAuthor">Author: <span class="bookInfo">Asato Asato</span></p>
+                </div>
+                <div class="pageDiv">
+                    <p class="bookPages">Pages: <span class="bookInfo">326</span></p>
+                </div>
+                <div class="readDiv">
+                    <p class="bookRead">Read: <span class="bookInfo">Read</span></p>
+                </div>
+                <div class="deleteDiv">
+                    <button type="button"> Delete Book </button>
+                </div>
+            </div>  -->
             
         </div>
     </main>
