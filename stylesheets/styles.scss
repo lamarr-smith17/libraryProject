@@ -1,12 +1,22 @@
 // Global Styles
+:root {
+    --main-color-1: #77b1c9;
+    --accent-color-1: #fc827f;
+    --accent-color-2: #daf0f0;
+    --accent-color-3: #f36765;
+    --accent-color-4: #f7dc7e;
+    --accent-color-5: #f5d151;
+    --standard-white: #FFF;
+    --standard-black: #000;
+}
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif; // Weights: Light = 300, Medium = 400, SemiBold = 600. Use Light for book info, Medium for labels, SemiBold for headers
-}
+} 
 body {
-    background-color: bisque;
+    background-color: var(--main-color-1);
     min-height: 100vh;
 }
 li {
@@ -26,15 +36,15 @@ header {
 h1 {
     text-align: center;
 }
-
 // Form Styles
 #formHolder {
     display: none;
-    border: 3px solid red;
-    background-color: aliceblue;
+    border: 2px solid var(--accent-color-1);
+    border-radius: 25px;
+    background-color: var(--accent-color-2);
     position: fixed;
     top: 150px; 
-    width: 300px;
+    width: 250px;
     max-width: 500px;
 }
 #bookForm {
@@ -59,39 +69,41 @@ input[type=number]:focus {
     width: 150px;
     height: 25px;
     border-radius: 20px;
+    font-size: 1rem;
 }
 #addBookBtn {
-    background-color: red;
-    border: red;
-    color: black;
+    background-color: var(--accent-color-1);
+    border: var(--standard-black);
+    color: var(--standard-black);
 }
 
 #formCloseBtn {
-    background-color: green;
-    border:green;
+    background-color: var(--accent-color-4);
+    border:var(--standard-black);
 }
-
+ 
 // Main Styles
 main {
-    margin-top: 50px;
+    margin-top: 25px;
 }
 div {
     &#main-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        display: flex;
+        flex-direction: column;        
         justify-items: center;
+        align-items: center;
         gap: 2rem 1rem;
-        
     }
     &.bookHolder{
         display: flex;
-        background-color: white;
+        background-color: var(--standard-white);
         font-size: 1.5rem;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        border: 1px solid red;
-        width: 400px;
+        border-right: 2px solid var(--accent-color-1);
+        border-radius: 25px;
+        width: 350px;
         padding: 20px;
     }
 }
@@ -103,11 +115,30 @@ div {
 .bookInfo {
     font-weight: 300;
 }
-button {
-    &#deleteButton {
-        height: 100px;
-        width: 100px;
-        color: red;
-        
+.deleteBtn{
+    width: 150px;
+    height: 25px;
+    border-radius: 20px;
+    font-size: 1rem;
+    background-color: var(--accent-color-1);
+    border: 1px solid var(--standard-black);
+}
+
+// Desktop View
+@media only screen and (min-width: 768px) { 
+    #addBookBtn:hover{
+        transition: .2s;
+        background-color: var(--accent-color-3);
     }
+    
+    #formCloseBtn:hover{
+        transition: .2s;
+        background-color: var(--accent-color-5);
+    }
+    .deleteBtn:hover{
+        transition: .2s;
+        background-color: var(--accent-color-3);
+    }
+    
+    
 }

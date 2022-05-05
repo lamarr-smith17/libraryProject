@@ -54,7 +54,7 @@ function bookCardCreater(newBook){
             <p class="bookRead">Read: <span class="bookInfo">${newBook.bookStatus}</span></p>
         </div>
         <div class="deleteDiv">
-            <button type="button" onclick="deleteBook(${newBook.bookID})"> Delete Book </button>
+            <button type="button" class="deleteBtn" onclick="deleteBook(${newBook.bookID})"> Delete Book </button>
         </div>
     </div>       
     ` /* END */
